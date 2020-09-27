@@ -1,0 +1,54 @@
+:root {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.exerciseResponses {
+  margin: 0.4em 0;
+}
+
+.responseWrapper {
+  display: flex;
+  padding: 0.4em 0.8em;
+  border: 1px solid lightgray;
+  margin: 0.4em 0;
+  border-radius: 0.4em;
+  cursor: pointer;
+}
+
+.responseIcon {
+  margin-right: 0.4em;
+  fill: gray;
+}
+
+.responseWrapper.selected {
+  border-color: black;
+}
+
+.responseWrapper.success {
+  border-color: green;
+  color: darkgreen;
+}
+
+.responseWrapper.success .responseIcon {
+  fill: green;
+}
+
+.responseWrapper.error {
+  border-color: red;
+  color: darkred;
+}
+
+.responseWrapper.error .responseIcon {
+  fill: red;
+}
+
+.exerciseControls {
+  margin: 1em 0;
+}
+
+.buttonBase {
+  padding: 0.2em 0.6em;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
