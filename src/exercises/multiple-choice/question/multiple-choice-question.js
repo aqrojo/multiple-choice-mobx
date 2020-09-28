@@ -8,6 +8,10 @@ import ExerciseControls from '../../common/components/exercise-controls';
 export default function MultipleChoiceQuestion({data}) {
   const store = useLocalStore(() => createStore(data));
 
+  useEffect(() => {
+    window.store = store;
+  }, [])
+
   return useObserver(() =>
     <div className="LemonadeApp">
       <div className="multipleChoice">

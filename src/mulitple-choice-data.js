@@ -3,7 +3,11 @@ export const exerciseData = {
     '<p><strong><span style="font-size: 18px;">This is the stem</span></strong></p>',
   responses: [
     {
-      text: "Response A"
+      text: "Response A",
+      selected,
+      id,
+      result,
+      feedback
     },
     {
       text: "Response B"
