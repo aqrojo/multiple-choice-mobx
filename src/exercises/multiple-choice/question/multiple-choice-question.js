@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import createStore from '../store/multiple-choice-store';
 import { useLocalStore, useObserver } from 'mobx-react-lite';
 import './multiple-choice-question.css';

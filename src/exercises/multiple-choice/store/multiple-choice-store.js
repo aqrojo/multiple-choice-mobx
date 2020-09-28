@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx';
+import { action, observable, toJS } from 'mobx';
 import when from '@aqrojo/when';
 import FEEDBACK from '../../common/constants/feedback';
 
@@ -50,12 +50,24 @@ export default function createStore(data) {
 
     get userResponse() {
       return state.responses.reduce((acc, next) => {
-        return [...acc, ...(next.isSelected ? [next.text] : [])];
+        return [...acc, ...(next.selected ? [next.text] : [])];
       }, []);
     },
 
     get result() {
       return state.userResponse.toString() === state.validResponse.toString();
+    },
+
+    get output() {
+      return ({
+        steam: state.steam,
+        responses: state.responses.map(response => ({
+          text: response.text
+        })),
+        validResponse: toJS(state.validResponse),
+        userResponse: state.userResponse,
+        result: state.result
+      })
     },
 
     evaluate: action(() => state.isEvaluated = true),

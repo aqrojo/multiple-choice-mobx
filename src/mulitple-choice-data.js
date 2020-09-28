@@ -4,10 +4,6 @@ export const exerciseData = {
   responses: [
     {
       text: "Response A",
-      selected,
-      id,
-      result,
-      feedback
     },
     {
       text: "Response B"
