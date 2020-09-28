@@ -1,4 +1,4 @@
-import { action, observable, toJS } from 'mobx';
+import { observable, toJS } from 'mobx';
 import when from '@aqrojo/when';
 import FEEDBACK from '../../common/constants/feedback';
 
@@ -21,14 +21,16 @@ function responseModel({ parent, text, idx, selected = false }) {
         .resolve();
     },
 
-    select: action(() => {
+    select() {
       if (!parent.isEvaluated && !selected) {
         parent.reset();
         response.selected = true;
       }
-    }),
+    },
 
-    reset: action(() => response.selected = false),
+    reset() {
+      response.selected = false;
+    },
   });
   return response;
 }
@@ -38,14 +40,14 @@ export default function createStore(data) {
     ...data,
     isEvaluated: false,
 
-    get responses () {
+    get responses() {
       return data.responses.map(({ text }, idx) => {
         return responseModel({
           text,
           idx,
           parent: state,
-        })
-      })
+        });
+      });
     },
 
     get userResponse() {
@@ -62,20 +64,22 @@ export default function createStore(data) {
       return ({
         steam: state.steam,
         responses: state.responses.map(response => ({
-          text: response.text
+          text: response.text,
         })),
         validResponse: toJS(state.validResponse),
         userResponse: state.userResponse,
-        result: state.result
-      })
+        result: state.result,
+      });
     },
 
-    evaluate: action(() => state.isEvaluated = true),
+    evaluate() {
+      state.isEvaluated = true;
+    },
 
-    reset: action(() => {
+    reset() {
       state.responses.forEach(response => response.reset());
       state.isEvaluated = false;
-    }),
+    },
 
   });
   return state;
