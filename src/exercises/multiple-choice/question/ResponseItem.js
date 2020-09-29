@@ -1,7 +1,7 @@
 import React from 'react';
 import { useObserver } from 'mobx-react-lite';
 import cn from '@aqrojo/class-names';
-import { ReactComponent as CheckIcon } from "../../../assets/done-24px.svg";
+import { ReactComponent as CheckIcon } from "../../assets/done-24px.svg";
 import FEEDBACK from '../../common/constants/feedback';
 
 export function ResponseItem({ response, isEvaluated }) {
